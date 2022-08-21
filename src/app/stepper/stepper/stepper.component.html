@@ -1,0 +1,34 @@
+<mat-stepper>
+    <mat-step label="Add people to your groups" state="groups">
+      <p>Put down your phones.</p>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Add trading records" state="money">
+      <p>Socialize with each other.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="View reports" state="report">
+      <p>You're welcome.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+  
+    <!-- Icon overrides. -->
+    <ng-template matStepperIcon="groups">
+      <mat-icon>groups</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="money">
+      <mat-icon>attach_money</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="report">
+        <mat-icon>table_view</mat-icon>
+      </ng-template>
+  </mat-stepper>
+  
