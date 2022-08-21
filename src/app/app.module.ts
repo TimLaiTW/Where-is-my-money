@@ -5,13 +5,19 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StepperComponent } from './stepper/stepper/stepper.component';
+import { StepperComponent } from './stepper/stepper.component';
+import { GroupComponent } from './pages/group/group.component';
+import { TransactionComponent } from './pages/transaction/transaction.component';
+import { ReportComponent } from './pages/report/report.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StepperComponent
+    StepperComponent,
+    GroupComponent,
+    TransactionComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

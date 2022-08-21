@@ -1,19 +1,19 @@
 <mat-stepper>
     <mat-step label="Add people to your groups" state="groups">
-      <p>Put down your phones.</p>
+      <app-group></app-group>
       <div>
         <button mat-button matStepperNext>Next</button>
       </div>
     </mat-step>
     <mat-step label="Add trading records" state="money">
-      <p>Socialize with each other.</p>
+      <app-transaction></app-transaction>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
     </mat-step>
     <mat-step label="View reports" state="report">
-      <p>You're welcome.</p>
+      <app-report></app-report>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
