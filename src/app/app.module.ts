@@ -11,7 +11,6 @@ import { TransactionComponent } from './pages/transaction/transaction.component'
 import { ReportComponent } from './pages/report/report.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

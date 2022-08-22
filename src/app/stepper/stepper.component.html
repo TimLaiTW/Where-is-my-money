@@ -1,4 +1,4 @@
-<mat-stepper>
+<mat-stepper [orientation]="(stepperOrientation | async)!">
     <mat-step label="Add people to your groups" state="groups">
       <app-group></app-group>
       <div>

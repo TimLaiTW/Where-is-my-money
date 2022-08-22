@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {StepperOrientation} from '@angular/material/stepper';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-stepper',
@@ -13,8 +17,12 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
   ],
 })
 export class StepperComponent implements OnInit {
-
-  constructor() { }
+  stepperOrientation: Observable<StepperOrientation>;
+  constructor(breakpointObserver: BreakpointObserver) { 
+    this.stepperOrientation = breakpointObserver
+      .observe('(min-width: 800px)')
+      .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
+  }
 
   ngOnInit(): void {
   }
