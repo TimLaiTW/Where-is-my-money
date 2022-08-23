@@ -1,6 +1,6 @@
 <div *ngIf="!showMainSection; else mainSection">
   <app-welcome></app-welcome>
-  <button (click)="showMainSection = true">Start</button>
+  <button mat-raised-button (click)="showMainSection = true">Start</button>
 </div>
 
 <ng-template #mainSection>

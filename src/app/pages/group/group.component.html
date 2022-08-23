@@ -1,1 +1,7 @@
-<p>group works!</p>
+<button mat-raised-button (click)="openDialog()">Add friend</button>
+
+<ol>
+    <li *ngIf="name">
+        You chose: <i>{{name}}</i>
+    </li>
+</ol>

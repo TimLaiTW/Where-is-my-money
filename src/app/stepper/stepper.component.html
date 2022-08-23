@@ -1,21 +1,21 @@
 <mat-stepper [orientation]="(stepperOrientation | async)!">
-    <mat-step label="Add people to your groups" state="groups">
+    <mat-step label="Add friends to the group" state="groups">
       <app-group></app-group>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-raised-button matStepperNext>Next</button>
       </div>
     </mat-step>
-    <mat-step label="Add trading records" state="money">
+    <mat-step label="Add expense" state="money">
       <app-transaction></app-transaction>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext>Next</button>
       </div>
     </mat-step>
     <mat-step label="View reports" state="report">
       <app-report></app-report>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperPrevious>Back</button>
       </div>
     </mat-step>
   

@@ -18,7 +18,7 @@ import {map} from 'rxjs/operators';
 })
 export class StepperComponent implements OnInit {
   stepperOrientation: Observable<StepperOrientation>;
-  constructor(breakpointObserver: BreakpointObserver) { 
+  constructor(breakpointObserver: BreakpointObserver) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
