@@ -1,7 +1,5 @@
-<button mat-raised-button (click)="openDialog()">Add friend</button>
+<button mat-raised-button (click)="openGroupDialog()">Add friend</button>
 
-<ol>
-    <li *ngIf="name">
-        You chose: <i>{{name}}</i>
-    </li>
-</ol>
+<div *ngFor="let friend of friends" (click)="openFriendDialog(friend.id)">
+    <app-group-list-card [friend]="friend.name"></app-group-list-card>
+</div>

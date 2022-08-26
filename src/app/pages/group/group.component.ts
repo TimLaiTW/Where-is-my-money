@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog } from '@angular/material/dialog';
 import { GroupDialogComponent } from '../../component/group-dialog/group-dialog.component';
+import { GroupServiceService } from '../../service/group-service.service';
+import { friend } from '../../type';
 
 export interface DialogData {
   name: string;
@@ -12,20 +14,32 @@ export interface DialogData {
   styleUrls: ['./group.component.scss']
 })
 export class GroupComponent implements OnInit {
-  name: string | undefined;
-  constructor(public dialog: MatDialog) {}
-  openDialog(): void {
+  friends?: friend[];
+
+  constructor(public dialog: MatDialog, private groupService: GroupServiceService) {}
+
+  openGroupDialog(): void {
     const dialogRef = this.dialog.open(GroupDialogComponent, {
       width: '15rem',
-      data: {name: this.name},
+      data: {name: ''},
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.name = result;
+      if(!result){
+        return;
+      }
+      
+      this.groupService.addFriend(result);
     });
   }
+
   ngOnInit(): void {
+    this.groupService.friends.subscribe(
+      friends => this.friends = friends);
   }
 
+  openFriendDialog(id: number){
+    // TODO: dialog for editing name 
+    this.groupService.editName(id, 'ayy');
+  }
 }

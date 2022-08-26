@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { TransactionComponent } from './pages/transaction/transaction.component'
 import { ReportComponent } from './pages/report/report.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { GroupDialogComponent } from './component/group-dialog/group-dialog.component';
+import { GroupListCardComponent } from './component/group-list-card/group-list-card.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { GroupDialogComponent } from './component/group-dialog/group-dialog.comp
     TransactionComponent,
     ReportComponent,
     WelcomeComponent,
-    GroupDialogComponent
+    GroupDialogComponent,
+    GroupListCardComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { GroupDialogComponent } from './component/group-dialog/group-dialog.comp
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
     FormsModule
   ],
   providers: [],
