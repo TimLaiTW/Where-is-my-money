@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog } from '@angular/material/dialog';
-import { GroupDialogComponent } from '../../component/group-dialog/group-dialog.component';
+import { AddNewFriendDialogComponent } from '../../component/dialog/add-new-friend-dialog/add-new-friend-dialog.component';
 import { GroupServiceService } from '../../service/group-service.service';
 import { friend } from '../../type';
 
@@ -19,7 +19,7 @@ export class GroupComponent implements OnInit {
   constructor(public dialog: MatDialog, private groupService: GroupServiceService) {}
 
   openGroupDialog(): void {
-    const dialogRef = this.dialog.open(GroupDialogComponent, {
+    const dialogRef = this.dialog.open(AddNewFriendDialogComponent, {
       width: '15rem',
       data: {name: ''},
     });

@@ -6,13 +6,13 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-group-dialog',
-  templateUrl: './group-dialog.component.html',
-  styleUrls: ['./group-dialog.component.scss']
+  selector: 'app-add-new-friend-dialog',
+  templateUrl: './add-new-friend-dialog.component.html',
+  styleUrls: ['./add-new-friend-dialog.component.scss']
 })
-export class GroupDialogComponent {
+export class AddNewFriendDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<GroupDialogComponent>,
+    public dialogRef: MatDialogRef<AddNewFriendDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
 

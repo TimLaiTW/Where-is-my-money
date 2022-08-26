@@ -16,7 +16,7 @@ import { GroupComponent } from './pages/group/group.component';
 import { TransactionComponent } from './pages/transaction/transaction.component';
 import { ReportComponent } from './pages/report/report.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { GroupDialogComponent } from './component/group-dialog/group-dialog.component';
+import { AddNewFriendDialogComponent } from './component/dialog/add-new-friend-dialog/add-new-friend-dialog.component';
 import { GroupListCardComponent } from './component/group-list-card/group-list-card.component';
 
 @NgModule({
@@ -27,7 +27,7 @@ import { GroupListCardComponent } from './component/group-list-card/group-list-c
     TransactionComponent,
     ReportComponent,
     WelcomeComponent,
-    GroupDialogComponent,
+    AddNewFriendDialogComponent,
     GroupListCardComponent
   ],
   imports: [
