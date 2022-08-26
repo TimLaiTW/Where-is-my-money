@@ -5,7 +5,7 @@ import { friend } from '../type';
 @Injectable({
   providedIn: 'root'
 })
-export class GroupServiceService {
+export class FriendsService {
   // TODO: Do I really need id ?
   id: number = 0;
   private group = new BehaviorSubject<friend[]>([]);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog } from '@angular/material/dialog';
 import { AddNewFriendDialogComponent } from '../../component/dialog/add-new-friend-dialog/add-new-friend-dialog.component';
-import { GroupServiceService } from '../../service/group-service.service';
+import { FriendsService } from '../../service/friends.service';
 import { friend } from '../../type';
 
 export interface DialogData {
@@ -16,7 +16,7 @@ export interface DialogData {
 export class GroupComponent implements OnInit {
   friends?: friend[];
 
-  constructor(public dialog: MatDialog, private groupService: GroupServiceService) {}
+  constructor(public dialog: MatDialog, private friendsService: FriendsService) {}
 
   openGroupDialog(): void {
     const dialogRef = this.dialog.open(AddNewFriendDialogComponent, {
@@ -29,17 +29,17 @@ export class GroupComponent implements OnInit {
         return;
       }
       
-      this.groupService.addFriend(result);
+      this.friendsService.addFriend(result);
     });
   }
 
   ngOnInit(): void {
-    this.groupService.friends.subscribe(
+    this.friendsService.friends.subscribe(
       friends => this.friends = friends);
   }
 
   openFriendDialog(id: number){
     // TODO: dialog for editing name 
-    this.groupService.editName(id, 'ayy');
+    this.friendsService.editName(id, 'ayy');
   }
 }

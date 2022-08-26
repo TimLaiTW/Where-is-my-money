@@ -16,7 +16,7 @@ export class AddNewFriendDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
 
-  onNoClick(): void {
+  onCancel(): void {
     this.dialogRef.close();
   }
 }
