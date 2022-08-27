@@ -18,7 +18,7 @@ import { ReportComponent } from './pages/report/report.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { AddNewFriendDialogComponent } from './component/dialog/add-new-friend-dialog/add-new-friend-dialog.component';
 import { GroupListCardComponent } from './component/group-list-card/group-list-card.component';
-import { ModifyFriendDialogComponent } from './component/dialog/modify-friend-dialog/modify-friend-dialog.component';
+import { EditFriendDialogComponent } from './component/dialog/edit-friend-dialog/edit-friend-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { ModifyFriendDialogComponent } from './component/dialog/modify-friend-di
     WelcomeComponent,
     AddNewFriendDialogComponent,
     GroupListCardComponent,
-    ModifyFriendDialogComponent
+    EditFriendDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { friend } from '../type';
+import { Friend } from '../type';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +8,11 @@ import { friend } from '../type';
 export class FriendsService {
   // TODO: Do I really need id ?
   id: number = 0;
-  private group = new BehaviorSubject<friend[]>([]);
+  private group = new BehaviorSubject<Friend[]>([]);
   friends = this.group.asObservable();
   
   addFriend(name: string){
-    const temp: friend[] = this.group.getValue();
+    const temp: Friend[] = this.group.getValue();
     temp.push({
       id: this.id++,
       name: name,
@@ -22,7 +22,7 @@ export class FriendsService {
   }
 
   editName(id: number, name: string){
-    const temp: friend[] = this.group.getValue();
+    const temp: Friend[] = this.group.getValue();
     temp[id].name = name;
     this.group.next(temp);
   }

@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { AddNewFriendDialogComponent } from '../../component/dialog/add-new-friend-dialog/add-new-friend-dialog.component';
+import { EditFriendDialogComponent } from '../../component/dialog/edit-friend-dialog/edit-friend-dialog.component';
 import { FriendsService } from '../../service/friends.service';
-import { friend } from '../../type';
-
-export interface DialogData {
-  name: string;
-}
+import { Friend } from '../../type';
 
 @Component({
   selector: 'app-group',
@@ -14,11 +11,11 @@ export interface DialogData {
   styleUrls: ['./group.component.scss']
 })
 export class GroupComponent implements OnInit {
-  friends?: friend[];
+  friends?: Friend[];
 
   constructor(public dialog: MatDialog, private friendsService: FriendsService) {}
 
-  openGroupDialog(): void {
+  openAddNewFriendDialog(): void {
     const dialogRef = this.dialog.open(AddNewFriendDialogComponent, {
       width: '15rem',
       data: {name: ''},
@@ -33,13 +30,23 @@ export class GroupComponent implements OnInit {
     });
   }
 
+  openEditFriendDialog(friend: Friend): void {
+    const dialogRef = this.dialog.open(EditFriendDialogComponent, {
+      width: '15rem',
+      data: {name: friend.name},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(!result){
+        return;
+      }
+      
+      this.friendsService.editName(friend.id, result);
+    });
+  }
+
   ngOnInit(): void {
     this.friendsService.friends.subscribe(
       friends => this.friends = friends);
-  }
-
-  openFriendDialog(id: number){
-    // TODO: dialog for editing name 
-    this.friendsService.editName(id, 'ayy');
   }
 }

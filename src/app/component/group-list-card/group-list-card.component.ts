@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Friend } from '../../type';
 
 @Component({
   selector: 'app-group-list-card',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./group-list-card.component.scss']
 })
 export class GroupListCardComponent implements OnInit {
-  @Input() friend?: string;
+  @Input() friend!: Friend;
   constructor() { }
 
   ngOnInit(): void {
