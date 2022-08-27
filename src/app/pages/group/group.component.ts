@@ -11,7 +11,7 @@ import { Friend } from '../../type';
   styleUrls: ['./group.component.scss']
 })
 export class GroupComponent implements OnInit {
-  friends?: Friend[];
+  friends: Friend[] = [];
 
   constructor(public dialog: MatDialog, private friendsService: FriendsService) {}
 

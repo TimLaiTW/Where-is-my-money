@@ -1,0 +1,22 @@
+.mat-card {
+    cursor: pointer;
+    margin: 0.5rem 0;
+}
+
+.mat-card:hover {
+    background-color: red;
+}
+
+.mat-card:active {
+    background-color: blue;
+}
+
+.mat-icon {
+    margin-left: 1rem;
+    margin-right: 2rem;;
+}
+
+.mat-card-title {
+    display: flex;
+    align-items: center;
+}

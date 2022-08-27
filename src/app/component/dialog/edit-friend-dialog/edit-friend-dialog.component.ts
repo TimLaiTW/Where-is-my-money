@@ -8,10 +8,13 @@ import { FriendDialogData } from '../../../type';
   styleUrls: ['./edit-friend-dialog.component.scss']
 })
 export class EditFriendDialogComponent {
+  name: string = '';
   constructor(
     public dialogRef: MatDialogRef<EditFriendDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: FriendDialogData,
-  ) {}
+  ) {
+    this.name = data.name;
+  }
 
   onCancel(): void {
     this.dialogRef.close();
