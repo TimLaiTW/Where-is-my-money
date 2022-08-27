@@ -16,8 +16,12 @@ export class EditFriendDialogComponent {
     this.name = data.name;
   }
 
+  onRemove(): void {
+    this.dialogRef.close({event:'Remove'});
+  }
+
   onCancel(): void {
-    this.dialogRef.close();
+    this.dialogRef.close({event:'Cancel'});
   }
 
 }

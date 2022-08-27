@@ -2,10 +2,11 @@
     text-align: left;
 }
 
-.spacer {
-    flex: 1 1 auto;
-}
-
 .mat-form-field {
     display: block;
+}
+
+
+.mat-dialog-actions {
+    justify-content: space-between;
 }

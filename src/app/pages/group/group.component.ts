@@ -21,12 +21,12 @@ export class GroupComponent implements OnInit {
       data: {name: ''},
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(!result){
+    dialogRef.afterClosed().subscribe(name => {
+      if(!name){
         return;
       }
-      
-      this.friendsService.addFriend(result);
+
+      this.friendsService.addFriend(name);
     });
   }
 
@@ -37,11 +37,15 @@ export class GroupComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(!result){
+      if (result.event === 'Cancel'){
         return;
       }
-      
-      this.friendsService.editName(friend.id, result);
+      else if (result.event === 'Remove'){
+        this.friendsService.removeFriend(friend.id);
+      }
+      else {
+        this.friendsService.editName(friend.id, result);
+      }
     });
   }
 
