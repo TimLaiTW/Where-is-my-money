@@ -23,14 +23,19 @@ export class FriendsService {
 
   removeFriend(id: number) {
     const temp: Friend[] = this.group.getValue();
-    const indexOfDeletedObj = temp.map(friend => friend.id).indexOf(id);
-    temp.splice(indexOfDeletedObj, 1);
+    const index = this.getIndexFromArrayById(temp, id);
+    temp.splice(index, 1);
     this.group.next(temp);
   }
 
   editName(id: number, name: string) {
     const temp: Friend[] = this.group.getValue();
-    temp[id].name = name;
+    const index = this.getIndexFromArrayById(temp, id);
+    temp[index].name = name;
     this.group.next(temp);
+  }
+
+  getIndexFromArrayById(arr: Friend[], id: number): number {
+    return arr.map(obj => obj.id).indexOf(id);
   }
 }

@@ -37,14 +37,15 @@ export class GroupComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result.event === 'Cancel'){
-        return;
+      console.log(result);
+      if (!result.event) {
+        this.friendsService.editName(friend.id, result);
       }
       else if (result.event === 'Remove'){
         this.friendsService.removeFriend(friend.id);
       }
-      else {
-        this.friendsService.editName(friend.id, result);
+      else if (result.event === 'Cancel'){
+        return;
       }
     });
   }
