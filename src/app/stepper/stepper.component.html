@@ -1,6 +1,8 @@
 <mat-stepper [orientation]="(stepperOrientation | async)!">
     <mat-step label="Add friends to the group" state="groups">
-      <app-group></app-group>
+      <div class="page-container">
+        <app-group></app-group>
+      </div>
       <div class="footer">
         <mat-divider></mat-divider>
         <div class="stepper-button-row">
@@ -10,7 +12,9 @@
       </div>
     </mat-step>
     <mat-step label="Add expense" state="money">
-      <app-transaction></app-transaction>
+      <div class="page-container">
+        <app-transaction></app-transaction>
+      </div>
       <div class="footer">
         <mat-divider></mat-divider>
         <div class="stepper-button-row">
@@ -20,7 +24,9 @@
       </div>
     </mat-step>
     <mat-step label="View reports" state="report">
-      <app-report></app-report>
+      <div class="page-container">
+        <app-report></app-report>
+      </div>
       <div class="footer">
         <mat-divider></mat-divider>
         <div class="stepper-button-row">

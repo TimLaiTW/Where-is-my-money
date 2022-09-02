@@ -37,8 +37,10 @@ export class GroupComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      if (!result.event) {
+      if (!result){
+        return;
+      }
+      else if (!result.event) {
         this.friendsService.editName(friend.id, result);
       }
       else if (result.event === 'Remove'){

@@ -1,5 +1,5 @@
 <button mat-raised-button color="primary" (click)="openAddNewFriendDialog()">Add friend</button>
-<div class="friends-list" *ngIf="friends.length > 0">
+<div class="friends-list">
     <app-group-list-card 
         *ngFor="let friend of friends" 
         [friend]="friend"
