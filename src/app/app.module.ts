@@ -14,24 +14,26 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StepperComponent } from './stepper/stepper.component';
 import { GroupComponent } from './pages/group/group.component';
-import { TransactionComponent } from './pages/transaction/transaction.component';
+import { ExpenseComponent } from './pages/expense/expense.component';
 import { ReportComponent } from './pages/report/report.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { AddNewFriendDialogComponent } from './component/dialog/add-new-friend-dialog/add-new-friend-dialog.component';
 import { GroupListCardComponent } from './component/group-list-card/group-list-card.component';
 import { EditFriendDialogComponent } from './component/dialog/edit-friend-dialog/edit-friend-dialog.component';
+import { AddExpenseDialogComponent } from './component/dialog/add-expense-dialog/add-expense-dialog/add-expense-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StepperComponent,
     GroupComponent,
-    TransactionComponent,
+    ExpenseComponent,
     ReportComponent,
     WelcomeComponent,
     AddNewFriendDialogComponent,
     GroupListCardComponent,
-    EditFriendDialogComponent
+    EditFriendDialogComponent,
+    AddExpenseDialogComponent
   ],
   imports: [
     BrowserModule,
