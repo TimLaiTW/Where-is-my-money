@@ -8,7 +8,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,7 +21,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { AddNewFriendDialogComponent } from './component/dialog/add-new-friend-dialog/add-new-friend-dialog.component';
 import { GroupListCardComponent } from './component/group-list-card/group-list-card.component';
 import { EditFriendDialogComponent } from './component/dialog/edit-friend-dialog/edit-friend-dialog.component';
-import { AddExpenseDialogComponent } from './component/dialog/add-expense-dialog/add-expense-dialog/add-expense-dialog.component';
+import { AddExpenseDialogComponent } from './component/dialog/add-expense-dialog/add-expense-dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AddExpenseDialogComponent } from './component/dialog/add-expense-dialog
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatStepperModule,
     MatIconModule,
     MatButtonModule,
@@ -46,7 +48,8 @@ import { AddExpenseDialogComponent } from './component/dialog/add-expense-dialog
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    FormsModule
+    MatSelectModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

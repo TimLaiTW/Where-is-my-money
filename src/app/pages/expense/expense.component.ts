@@ -1,15 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddExpenseDialogComponent } from 'src/app/component/dialog/add-expense-dialog/add-expense-dialog.component';
 
 @Component({
   selector: 'app-expense',
   templateUrl: './expense.component.html',
   styleUrls: ['./expense.component.scss']
 })
-export class ExpenseComponent implements OnInit {
+export class ExpenseComponent{
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  openAddExpenseDialog(): void {
+    const dialogRef = this.dialog.open(AddExpenseDialogComponent, {
+      width: '15rem',
+      data: {name: ''},
+    });
+
+    dialogRef.afterClosed().subscribe(event => {
+      if(!event){
+        return;
+      }
+
+    });
   }
-
 }
