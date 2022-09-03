@@ -6,7 +6,7 @@
     </mat-form-field>
 </div>
 <div mat-dialog-actions>
-    <button mat-button (click)="onCancel()">Cancel</button>
-    <button mat-button (click)="onRemove()" color="warn">Remove</button>
-    <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Save</button>
+    <button mat-stroked-button (click)="onCancel()">Cancel</button>
+    <button mat-stroked-button (click)="onRemove()" color="warn">Remove</button>
+    <button mat-stroked-button [mat-dialog-close]="data.name" cdkFocusInitial>Save</button>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Friend } from '../../../type';
 import { FriendsService } from '../../../service/friends.service';
 
@@ -17,8 +17,12 @@ interface Food {
 export class AddExpenseDialogComponent implements OnInit{
   friends: Friend[] = [];
 
-  funderControl = new FormControl(null, Validators.required);
-  shareholderControl = new FormControl(null, Validators.required);
+  expense = new FormGroup({
+    funder: new FormControl('', Validators.required),
+    shareholder: new FormControl('', Validators.required),
+    amount: new FormControl(null, Validators.required),
+    description: new FormControl('')
+  });
 
   constructor(public dialogRef: MatDialogRef<AddExpenseDialogComponent>, private friendsService: FriendsService) { }
 
@@ -31,4 +35,35 @@ export class AddExpenseDialogComponent implements OnInit{
     this.dialogRef.close();
   }
 
+  disableButton(): boolean {
+    if (
+      this.funder?.hasError('required') || 
+      this.shareholder?.hasError('required') || 
+      this.amount?.hasError('required'))
+      {
+        console.log('something went wrong.');
+        return false;
+      }
+      return true;
+  }
+
+  callingFunction() {
+    console.log(this.expense.value);
+   }
+
+  get funder() { 
+    return this.expense.get('funder'); 
+  }
+  
+  get shareholder() { 
+    return this.expense.get('shareholder'); 
+  }
+
+  get amount() { 
+    return this.expense.get('amount'); 
+  }
+
+  get description() {
+    return this.expense.get('description');
+  }
 }

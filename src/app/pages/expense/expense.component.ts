@@ -14,6 +14,7 @@ export class ExpenseComponent{
   openAddExpenseDialog(): void {
     const dialogRef = this.dialog.open(AddExpenseDialogComponent, {
       width: '15rem',
+      height: '22rem',
       data: {name: ''},
     });
 
