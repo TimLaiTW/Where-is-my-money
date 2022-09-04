@@ -1,6 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { FriendDialogData } from '../../../type';
+import { Component } from '@angular/core';
+import { MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-new-friend-dialog',
@@ -8,9 +7,9 @@ import { FriendDialogData } from '../../../type';
   styleUrls: ['./add-new-friend-dialog.component.scss']
 })
 export class AddNewFriendDialogComponent {
+  friendName: string = '';
   constructor(
     public dialogRef: MatDialogRef<AddNewFriendDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: FriendDialogData,
   ) {}
 
   onCancel(): void {

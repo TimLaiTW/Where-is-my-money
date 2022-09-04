@@ -1,13 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { Friend } from '../../../type';
+import { Friend, ExpenseData } from '../../../type';
 import { FriendsService } from '../../../service/friends.service';
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-add-expense-dialog',
@@ -18,13 +13,16 @@ export class AddExpenseDialogComponent implements OnInit{
   friends: Friend[] = [];
 
   expense = new FormGroup({
-    funder: new FormControl('', Validators.required),
-    shareholder: new FormControl('', Validators.required),
+    paidBy: new FormControl(null, Validators.required),
+    shareWith: new FormControl(null, Validators.required),
     amount: new FormControl(null, Validators.required),
     description: new FormControl('')
   });
 
-  constructor(public dialogRef: MatDialogRef<AddExpenseDialogComponent>, private friendsService: FriendsService) { }
+  constructor(
+    public dialogRef: MatDialogRef<AddExpenseDialogComponent>, 
+    private friendsService: FriendsService,
+    @Inject(MAT_DIALOG_DATA) public expenseData: ExpenseData) { }
 
   ngOnInit(): void {
     this.friendsService.friends.subscribe(
@@ -35,28 +33,16 @@ export class AddExpenseDialogComponent implements OnInit{
     this.dialogRef.close();
   }
 
-  disableButton(): boolean {
-    if (
-      this.funder?.hasError('required') || 
-      this.shareholder?.hasError('required') || 
-      this.amount?.hasError('required'))
-      {
-        console.log('something went wrong.');
-        return false;
-      }
-      return true;
-  }
-
   callingFunction() {
     console.log(this.expense.value);
    }
 
-  get funder() { 
-    return this.expense.get('funder'); 
+  get paidBy() { 
+    return this.expense.get('paidBy'); 
   }
   
-  get shareholder() { 
-    return this.expense.get('shareholder'); 
+  get shareWith() { 
+    return this.expense.get('shareWith'); 
   }
 
   get amount() { 
@@ -65,5 +51,14 @@ export class AddExpenseDialogComponent implements OnInit{
 
   get description() {
     return this.expense.get('description');
+  }
+
+  getExpenseData(): ExpenseData {
+    return {
+      paidBy: this.expense.value.paidBy,
+      shareWith: this.expense.value.shareWith,
+      amount: this.expense.value.amount,
+      description: this.expense.value.description
+    };
   }
 }

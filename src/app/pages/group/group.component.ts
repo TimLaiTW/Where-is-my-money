@@ -17,8 +17,7 @@ export class GroupComponent implements OnInit {
 
   openAddNewFriendDialog(): void {
     const dialogRef = this.dialog.open(AddNewFriendDialogComponent, {
-      width: '15rem',
-      data: {name: ''},
+      width: '15rem'
     });
 
     dialogRef.afterClosed().subscribe(name => {
@@ -33,7 +32,7 @@ export class GroupComponent implements OnInit {
   openEditFriendDialog(friend: Friend): void {
     const dialogRef = this.dialog.open(EditFriendDialogComponent, {
       width: '15rem',
-      data: {name: friend.name},
+      data: {name: friend.name}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -41,10 +40,10 @@ export class GroupComponent implements OnInit {
         return;
       }
       else if (!result.event) {
-        this.friendsService.editName(friend.id, result);
+        this.friendsService.editName(friend.uuid, result);
       }
       else if (result.event === 'Remove'){
-        this.friendsService.removeFriend(friend.id);
+        this.friendsService.removeFriend(friend.uuid);
       }
       else if (result.event === 'Cancel'){
         return;

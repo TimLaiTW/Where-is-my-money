@@ -1,41 +1,38 @@
-import { Injectable, Type } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Friend } from '../type';
+import { getIndexFromArrayById } from '../constants';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FriendsService {
-  // TODO: Do I really need id ?
   id: number = 0;
-  private group = new BehaviorSubject<Friend[]>([]);
-  friends = this.group.asObservable();
+  private friendsSubject = new BehaviorSubject<Friend[]>([]);
+  friends = this.friendsSubject.asObservable();
   
-  addFriend(name: string) {
-    const temp: Friend[] = this.group.getValue();
-    temp.push({
-      id: this.id++,
+  addFriend(name: string): void {
+    const friendsList: Friend[] = this.friendsSubject.getValue();
+    friendsList.push({
+      uuid: uuidv4(),
       name: name,
       amount: 0
     });
-    this.group.next(temp);
+    this.friendsSubject.next(friendsList);
   }
 
-  removeFriend(id: number) {
-    const temp: Friend[] = this.group.getValue();
-    const index = this.getIndexFromArrayById(temp, id);
-    temp.splice(index, 1);
-    this.group.next(temp);
+  removeFriend(id: string): void {
+    const friendsList: Friend[] = this.friendsSubject.getValue();
+    const index = getIndexFromArrayById(friendsList, id);
+    friendsList.splice(index, 1);
+    this.friendsSubject.next(friendsList);
   }
 
-  editName(id: number, name: string) {
-    const temp: Friend[] = this.group.getValue();
-    const index = this.getIndexFromArrayById(temp, id);
-    temp[index].name = name;
-    this.group.next(temp);
-  }
-
-  getIndexFromArrayById(arr: Friend[], id: number): number {
-    return arr.map(obj => obj.id).indexOf(id);
+  editName(id: string, name: string): void {
+    const friendsList: Friend[] = this.friendsSubject.getValue();
+    const index = getIndexFromArrayById(friendsList, id);
+    friendsList[index].name = name;
+    this.friendsSubject.next(friendsList);
   }
 }

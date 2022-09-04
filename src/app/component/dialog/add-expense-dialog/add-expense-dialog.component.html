@@ -3,21 +3,21 @@
     <form [formGroup]="expense">
         <mat-form-field appearance="fill">
             <mat-label>Paid by</mat-label>
-            <mat-select formControlName="funder" required>
+            <mat-select formControlName="paidBy" required>
                 <mat-option *ngFor="let friend of friends" [value]="friend">
                   {{friend.name}}
                 </mat-option>
             </mat-select>
-            <mat-error *ngIf="funder?.hasError('required')">Who pay for this!?</mat-error>
+            <mat-error *ngIf="paidBy?.hasError('required')">Who pay for this!?</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Share with</mat-label>
-            <mat-select formControlName="shareholder" required multiple>
+            <mat-select formControlName="shareWith" required multiple>
                 <mat-option *ngFor="let friend of friends" [value]="friend">
                   {{friend.name}}
                 </mat-option>
             </mat-select>
-            <mat-error *ngIf="shareholder?.hasError('required')">No one responsible for this?</mat-error>
+            <mat-error *ngIf="shareWith?.hasError('required')">No one responsible for this?</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Amount</mat-label>
@@ -34,10 +34,10 @@
     <button mat-stroked-button (click)="onCancel()">Cancel</button>
     <button 
         mat-stroked-button 
-        (click)="callingFunction()" 
+        [mat-dialog-close]="getExpenseData()"
         [disabled]="
-            funder?.hasError('required') ||
-            shareholder?.hasError('required') ||
+            paidBy?.hasError('required') ||
+            shareWith?.hasError('required') ||
             amount?.hasError('required')"
-        cdkFocusInitial >Ok</button>
+        >Ok</button>
 </div> 

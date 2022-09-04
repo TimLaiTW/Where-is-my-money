@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'where-is-my-money';
+  // TODO: delete it if complete the welcome page.
   showMainSection = false;
 }
