@@ -1,3 +1,8 @@
+export enum FriendAction {
+    ADDFRIEND = 'addFriend',
+    EDITFRIEND = 'editFriend'
+}
+
 export type Friend = {
     uuid: string,
     name: string,
@@ -23,3 +28,11 @@ export type ExpenseData = {
     description?: string
 };
 
+export type FriendDialog = {
+    action: string,
+    title: string,
+    cancelBtnText?: string,
+    removeBtnText?: string,
+    submitBtnText?: string,
+    name?: string
+};

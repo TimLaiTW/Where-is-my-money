@@ -19,11 +19,10 @@ import { GroupComponent } from './pages/group/group.component';
 import { ExpenseComponent } from './pages/expense/expense.component';
 import { ReportComponent } from './pages/report/report.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { AddNewFriendDialogComponent } from './component/dialog/add-new-friend-dialog/add-new-friend-dialog.component';
 import { GroupListCardComponent } from './component/group-list-card/group-list-card.component';
-import { EditFriendDialogComponent } from './component/dialog/edit-friend-dialog/edit-friend-dialog.component';
 import { AddExpenseDialogComponent } from './component/dialog/add-expense-dialog/add-expense-dialog.component';
 import { ExpenseListTableComponent } from './component/expense-list-table/expense-list-table.component';
+import { ModuleFriendDialogComponent } from './component/dialog/module-friend-dialog/module-friend-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,11 +32,10 @@ import { ExpenseListTableComponent } from './component/expense-list-table/expens
     ExpenseComponent,
     ReportComponent,
     WelcomeComponent,
-    AddNewFriendDialogComponent,
     GroupListCardComponent,
-    EditFriendDialogComponent,
     AddExpenseDialogComponent,
-    ExpenseListTableComponent
+    ExpenseListTableComponent,
+    ModuleFriendDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+<h1 mat-dialog-title> {{data.title}} </h1>
+<div mat-dialog-content>
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="data.name">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button 
+        mat-stroked-button 
+        (click)="onAction('Cancel')"
+        >{{data.cancelBtnText ?? 'Cancel'}}</button>
+    <button 
+        mat-stroked-button 
+        (click)="onAction('Remove')" 
+        color="warn" 
+        *ngIf="data.action === 'editFriend'"
+        >{{data.removeBtnText ?? 'Remove'}}</button>
+    <button 
+        mat-stroked-button 
+        (click)="onAction('Save')" 
+        cdkFocusInitial>{{data.submitBtnText ?? 'Save'}}</button>
+</div>

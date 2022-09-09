@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddNewFriendDialogComponent } from '../../component/dialog/add-new-friend-dialog/add-new-friend-dialog.component';
-import { EditFriendDialogComponent } from '../../component/dialog/edit-friend-dialog/edit-friend-dialog.component';
 import { FriendsService } from '../../service/friends.service';
-import { Friend } from '../../type';
+import { Friend, FriendAction } from '../../type';
 
+import { ModuleFriendDialogComponent } from '../../component/dialog/module-friend-dialog/module-friend-dialog.component';
 @Component({
   selector: 'app-group',
   templateUrl: './group.component.html',
@@ -16,37 +15,44 @@ export class GroupComponent implements OnInit {
   constructor(public dialog: MatDialog, private friendsService: FriendsService) {}
 
   openAddNewFriendDialog(): void {
-    const dialogRef = this.dialog.open(AddNewFriendDialogComponent, {
-      width: '15rem'
+    const dialogRef = this.dialog.open(ModuleFriendDialogComponent, {
+      width: '15rem',
+      data: {
+        action: FriendAction.ADDFRIEND,
+        title: 'Enter friend\'s name',
+        name: ''
+      }
     });
 
-    dialogRef.afterClosed().subscribe(name => {
-      if(!name){
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result || result.event === 'Cancel'){
         return;
       }
-
-      this.friendsService.addFriend(name);
+      else if (result.event === 'Save') {
+        this.friendsService.addFriend(result.data.name);
+      }
     });
   }
 
   openEditFriendDialog(friend: Friend): void {
-    const dialogRef = this.dialog.open(EditFriendDialogComponent, {
+    const dialogRef = this.dialog.open(ModuleFriendDialogComponent, {
       width: '15rem',
-      data: {name: friend.name}
+      data: {
+        action: FriendAction.EDITFRIEND,
+        title: 'Enter friend\'s name',
+        name: friend.name
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (!result){
+      if (!result || result.event === 'Cancel'){
         return;
       }
-      else if (!result.event) {
-        this.friendsService.editName(friend.uuid, result);
+      else if (result.event === 'Save') {
+        this.friendsService.editName(friend.uuid, result.data.name);
       }
       else if (result.event === 'Remove'){
         this.friendsService.removeFriend(friend.uuid);
-      }
-      else if (result.event === 'Cancel'){
-        return;
       }
     });
   }
