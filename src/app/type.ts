@@ -1,6 +1,12 @@
-export enum FriendAction {
-    ADDFRIEND = 'addFriend',
-    EDITFRIEND = 'editFriend'
+export enum Action {
+    ADD = 'add',
+    EDIT = 'edit',
+    REMOVE = 'remove'
+}
+
+export type ActionResponse = {
+    id?: string,
+    action: Action
 }
 
 export type Friend = {
@@ -35,4 +41,16 @@ export type FriendDialog = {
     removeBtnText?: string,
     submitBtnText?: string,
     name?: string
+};
+
+export type ExpenseDialog = {
+    action: string,
+    title: string,
+    paidBy?: Friend,
+    shareWith?: Friend[],
+    amount?: number,
+    description?: string,
+    cancelBtnText?: string,
+    removeBtnText?: string,
+    submitBtnText?: string,
 };

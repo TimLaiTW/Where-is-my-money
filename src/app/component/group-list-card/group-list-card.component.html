@@ -6,5 +6,7 @@
             </mat-icon>
             {{friend.name}} 
         </mat-card-title>
+        <div class="spacer"></div>
+        <app-edit-btn-group (editEvent)="onEditEvent($event)"></app-edit-btn-group>
     </mat-card-content>
 </mat-card>

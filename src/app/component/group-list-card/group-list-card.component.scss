@@ -1,6 +1,7 @@
 .mat-card {
     cursor: pointer;
     margin: 0.5rem 0;
+    height: 3rem;
 }
 
 .mat-card:hover {
@@ -16,7 +17,11 @@
     margin-right: 2rem;;
 }
 
-.mat-card-title {
+.mat-card-title, .mat-card-content {
     display: flex;
     align-items: center;
+}
+
+.spacer {
+    flex-grow: 1;
 }

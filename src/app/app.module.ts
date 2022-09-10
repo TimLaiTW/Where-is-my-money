@@ -23,6 +23,8 @@ import { GroupListCardComponent } from './component/group-list-card/group-list-c
 import { AddExpenseDialogComponent } from './component/dialog/add-expense-dialog/add-expense-dialog.component';
 import { ExpenseListTableComponent } from './component/expense-list-table/expense-list-table.component';
 import { ModuleFriendDialogComponent } from './component/dialog/module-friend-dialog/module-friend-dialog.component';
+import { ModuleExpenseDialogComponent } from './component/dialog/module-expense-dialog/module-expense-dialog.component';
+import { EditBtnGroupComponent } from './component/button-group/edit-btn-group/edit-btn-group.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { ModuleFriendDialogComponent } from './component/dialog/module-friend-di
     GroupListCardComponent,
     AddExpenseDialogComponent,
     ExpenseListTableComponent,
-    ModuleFriendDialogComponent
+    ModuleFriendDialogComponent,
+    ModuleExpenseDialogComponent,
+    EditBtnGroupComponent
   ],
   imports: [
     BrowserModule,

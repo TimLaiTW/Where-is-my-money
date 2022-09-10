@@ -4,12 +4,17 @@ import { Friend } from '../type';
 import { getIndexFromArrayById } from '../constants';
 import { v4 as uuidv4 } from 'uuid';
 
+import { FakeFriendA, FakeFriendB } from '../template-for-test';
+
 @Injectable({
   providedIn: 'root'
 })
 export class FriendsService {
   id: number = 0;
-  private friendsSubject = new BehaviorSubject<Friend[]>([]);
+
+  private friendsSubject = new BehaviorSubject<Friend[]>([FakeFriendA, FakeFriendB]);
+  // private friendsSubject = new BehaviorSubject<Friend[]>([]);
+  
   friends = this.friendsSubject.asObservable();
   
   addFriend(name: string): void {
@@ -29,10 +34,10 @@ export class FriendsService {
     this.friendsSubject.next(friendsList);
   }
 
-  editName(id: string, name: string): void {
+  editName(friend: Friend): void {
     const friendsList: Friend[] = this.friendsSubject.getValue();
-    const index = getIndexFromArrayById(friendsList, id);
-    friendsList[index].name = name;
+    const index = getIndexFromArrayById(friendsList, friend.uuid);
+    friendsList[index].name = friend.name;
     this.friendsSubject.next(friendsList);
   }
 }

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger} from '@angular/animations';
 import { ExpenseService } from 'src/app/service/expense.service';
-import { Friend, Expense, ExpenseData } from 'src/app/type'; 
+import { Friend, Expense, ExpenseData, Action, ActionResponse } from 'src/app/type'; 
 import { MatTableDataSource} from '@angular/material/table';
 import { getStringFromArray } from 'src/app/constants';
+import { ModuleExpenseDialogComponent } from '../dialog/module-expense-dialog/module-expense-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { getExpenseObjectFromArrayById } from '../../constants';
 
 @Component({
   selector: 'app-expense-list-table',
@@ -18,17 +21,59 @@ import { getStringFromArray } from 'src/app/constants';
   ],
 })
 export class ExpenseListTableComponent implements OnInit{
+  expenses: Expense[] = [];
   dataSource = new MatTableDataSource<Expense>([]);
-  constructor(private expenseService: ExpenseService){}
+
+  constructor(public dialog: MatDialog, private expenseService: ExpenseService){
+  }
 
   ngOnInit(): void {
     this.expenseService.expenses.subscribe(
-      expenses => this.dataSource.data = expenses);
+      expenses => {
+        this.dataSource.data = expenses;
+        this.expenses = expenses;
+      });
   }
 
-  columnsToDisplay = ['Paid by', 'Share with', 'Amount'];
-  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
+  columnsToDisplay = ['paid-by', 'share-with', 'amount', 'action'];
   expandedElement: ExpenseData | null = null;
+
+  onEditEvent(response: ActionResponse){
+    if (response.action === Action.EDIT && response.id){
+      const expense = getExpenseObjectFromArrayById(this.expenses, response.id);
+      this.openEditExpenseDialog(expense);
+    }
+    else if (response.action === Action.REMOVE && response.id){
+      this.expenseService.removeExpense(response.id);
+    }
+  }
+
+  openEditExpenseDialog(expense: Expense): void {
+    const dialogRef = this.dialog.open(ModuleExpenseDialogComponent, {
+      width: '15rem',
+      height: '22rem',
+      data: {
+        action: Action.EDIT,
+        title: 'Edit',
+        paidBy: expense.paidBy,
+        shareWith: expense.shareWith,
+        amount: expense.amount,
+        description: expense.description,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result || result.event === 'Cancel'){
+        return;
+      }
+      else if (result.event === 'Save') {
+        this.expenseService.editExpense(result.data);
+      }
+      else if (result.event === 'Remove'){
+        this.expenseService.removeExpense(result.data.id);
+      }
+    });
+  }
 
   getStringFromFriends(friends: Friend[]): string{
     const friendsName: string[] = friends.map(friend => friend.name);

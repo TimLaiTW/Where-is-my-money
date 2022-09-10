@@ -1,0 +1,49 @@
+<h1 mat-dialog-title> {{data.title}} </h1>
+<div mat-dialog-content>
+    <form [formGroup]="expense">
+        <mat-form-field appearance="fill">
+            <mat-label>Paid by</mat-label>
+            <mat-select formControlName="paidBy" required>
+                <mat-option *ngFor="let friend of friends" [value]="friend.uuid">
+                  {{friend.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="paidBy?.hasError('required')">Who pay for this!?</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Share with</mat-label>
+            <mat-select formControlName="shareWith" required multiple>
+                <mat-option *ngFor="let friend of friends" [value]="friend">
+                  {{friend.name}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="shareWith?.hasError('required')">No one responsible for this?</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Amount</mat-label>
+            <input matInput type="number" formControlName="amount" required>
+            <mat-error *ngIf="amount?.hasError('required')">So, how much is it?</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput class="expense-description" formControlName="description" placeholder="Expense description"></textarea>
+        </mat-form-field>
+      </form>     
+</div>
+<div mat-dialog-actions>
+    <button mat-stroked-button (click)="onCancel()">{{data.cancelBtnText ?? 'Cancel'}}</button>
+    <button 
+    mat-stroked-button 
+    (click)="onAction('Remove')" 
+    color="warn" 
+    *ngIf="data.action === 'edit'"
+    >{{data.removeBtnText ?? 'Remove'}}</button>
+    <button 
+        mat-stroked-button 
+        [mat-dialog-close]="getExpenseData()"
+        [disabled]="
+            paidBy?.hasError('required') ||
+            shareWith?.hasError('required') ||
+            amount?.hasError('required')"
+        >{{data.submitBtnText ?? 'Save'}}</button>
+</div> 

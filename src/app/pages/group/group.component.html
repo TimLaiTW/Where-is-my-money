@@ -2,7 +2,6 @@
 <div class="friends-list">
     <app-group-list-card 
         *ngFor="let friend of friends" 
-        [friend]="friend"
-        (click)="openEditFriendDialog(friend)">
+        [friend]="friend">
     </app-group-list-card>
 </div>
