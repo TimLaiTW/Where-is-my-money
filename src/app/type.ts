@@ -46,6 +46,7 @@ export type FriendDialog = {
 export type ExpenseDialog = {
     action: string,
     title: string,
+    uuid?: string,
     paidBy?: Friend,
     shareWith?: Friend[],
     amount?: number,

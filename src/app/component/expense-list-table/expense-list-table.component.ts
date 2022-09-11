@@ -55,6 +55,7 @@ export class ExpenseListTableComponent implements OnInit{
       data: {
         action: Action.EDIT,
         title: 'Edit',
+        uuid: expense.uuid,
         paidBy: expense.paidBy,
         shareWith: expense.shareWith,
         amount: expense.amount,
@@ -67,7 +68,14 @@ export class ExpenseListTableComponent implements OnInit{
         return;
       }
       else if (result.event === 'Save') {
-        this.expenseService.editExpense(result.data);
+        const expenseDataWithId: Expense = {
+          uuid: expense.uuid,
+          paidBy: result.data.paidBy,
+          shareWith: result.data.shareWith,
+          amount: result.data.amount,
+          description: result.data.description
+        };
+        this.expenseService.editExpense(expenseDataWithId);
       }
       else if (result.event === 'Remove'){
         this.expenseService.removeExpense(result.data.id);

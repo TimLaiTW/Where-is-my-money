@@ -4,7 +4,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Paid by</mat-label>
             <mat-select formControlName="paidBy" required>
-                <mat-option *ngFor="let friend of friends" [value]="friend.uuid">
+                <mat-option *ngFor="let friend of friends" [value]="friend">
                   {{friend.name}}
                 </mat-option>
             </mat-select>
@@ -40,7 +40,7 @@
     >{{data.removeBtnText ?? 'Remove'}}</button>
     <button 
         mat-stroked-button 
-        [mat-dialog-close]="getExpenseData()"
+        (click)="onAction('Save')" 
         [disabled]="
             paidBy?.hasError('required') ||
             shareWith?.hasError('required') ||

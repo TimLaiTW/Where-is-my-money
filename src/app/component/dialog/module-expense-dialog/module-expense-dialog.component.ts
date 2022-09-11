@@ -4,6 +4,13 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Friend, ExpenseData, ExpenseDialog } from '../../../type';
 import { FriendsService } from '../../../service/friends.service';
 
+// testing
+interface Food {
+  value: string;
+  viewValue: string;
+}
+// testing
+
 @Component({
   selector: 'app-module-expense-dialog',
   templateUrl: './module-expense-dialog.component.html',
@@ -11,7 +18,7 @@ import { FriendsService } from '../../../service/friends.service';
 })
 export class ModuleExpenseDialogComponent{
   friends: Friend[] = [];
-  
+
   expense = new FormGroup({
     paidBy: new FormControl(null, Validators.required),
     shareWith: new FormControl(null, Validators.required),
@@ -22,7 +29,12 @@ export class ModuleExpenseDialogComponent{
   constructor(
     private dialogRef: MatDialogRef<ModuleExpenseDialogComponent>, 
     private friendsService: FriendsService,
-    @Inject(MAT_DIALOG_DATA) public data: ExpenseDialog) { }
+    @Inject(MAT_DIALOG_DATA) public data: ExpenseDialog) { 
+      this.expense.controls['paidBy']?.setValue(data.paidBy);
+      this.expense.controls['shareWith']?.setValue(data.shareWith);
+      this.expense.controls['amount']?.setValue(data.amount);
+      this.expense.controls['description']?.setValue(data.description);
+    }
 
   ngOnInit(): void {
     this.friendsService.friends.subscribe(
@@ -33,10 +45,10 @@ export class ModuleExpenseDialogComponent{
     this.dialogRef.close();
   }
 
-   onAction(event: string): void {
+  onAction(event: string): void {
     const response = {
       event,
-      data: this.data
+      data: this.getExpense()
     }
 
     this.dialogRef.close(response);
@@ -58,7 +70,7 @@ export class ModuleExpenseDialogComponent{
     return this.expense.get('description');
   }
 
-  getExpenseData(): ExpenseData {
+  getExpense(): ExpenseData {
     return {
       paidBy: this.expense.value.paidBy,
       shareWith: this.expense.value.shareWith,
