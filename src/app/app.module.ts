@@ -25,6 +25,7 @@ import { ExpenseListTableComponent } from './component/expense-list-table/expens
 import { ModuleFriendDialogComponent } from './component/dialog/module-friend-dialog/module-friend-dialog.component';
 import { ModuleExpenseDialogComponent } from './component/dialog/module-expense-dialog/module-expense-dialog.component';
 import { EditBtnGroupComponent } from './component/button-group/edit-btn-group/edit-btn-group.component';
+import { ReportTableComponent } from './component/report-table/report-table.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EditBtnGroupComponent } from './component/button-group/edit-btn-group/e
     ExpenseListTableComponent,
     ModuleFriendDialogComponent,
     ModuleExpenseDialogComponent,
-    EditBtnGroupComponent
+    EditBtnGroupComponent,
+    ReportTableComponent
   ],
   imports: [
     BrowserModule,

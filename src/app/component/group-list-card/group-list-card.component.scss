@@ -5,11 +5,7 @@
 }
 
 .mat-card:hover {
-    background-color: red;
-}
-
-.mat-card:active {
-    background-color: blue;
+    background: whitesmoke;
 }
 
 .mat-icon {
@@ -25,3 +21,7 @@
 .spacer {
     flex-grow: 1;
 }
+
+.table {
+    width: 100%;
+  }

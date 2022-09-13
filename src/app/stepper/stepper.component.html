@@ -1,4 +1,4 @@
-<mat-stepper [orientation]="(stepperOrientation | async)!">
+<mat-stepper [orientation]="(stepperOrientation | async)!" (selectionChange)="selectionChange($event)">
     <mat-step label="Add friends to the group" state="groups">
       <div class="page-container">
         <app-group></app-group>

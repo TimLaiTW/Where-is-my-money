@@ -1,33 +1,39 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Friend, Expense, ExpenseData } from '../type';
-import { getIndexFromArrayById } from '../constants';
+import { Friend, Expense, ExpenseData, Action } from '../type';
+import { getExpenseObjectFromArrayById, getIndexFromArrayById } from '../constants';
 import { v4 as uuidv4 } from 'uuid';
-
-import { FakeExpense } from '../template-for-test';
+import { FakeExpense0, FakeExpense1 } from '../template-for-test';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExpenseService {
-  private expensesSubject = new BehaviorSubject<Expense[]>([FakeExpense]);
+
+  constructor(){}
+  
+  // TODO: remove this after testing
+  private expensesSubject = new BehaviorSubject<Expense[]>([FakeExpense0, FakeExpense1]);
+  
   // private expensesSubject = new BehaviorSubject<Expense[]>([]);
   expenses = this.expensesSubject.asObservable();
 
   addExpense(expenseData: ExpenseData): void {
     const expensesList: Expense[] = this.expensesSubject.getValue();
-    expensesList.push({
+    const newExpense: Expense = {
       uuid: uuidv4(),
       paidBy: expenseData.paidBy,
       shareWith: expenseData.shareWith,
       amount: expenseData.amount,
       description: expenseData.description
-    });
+    };
+    expensesList.push(newExpense);
     this.expensesSubject.next(expensesList);
   }
 
   removeExpense(id: string): void {
     const expensesList: Expense[] = this.expensesSubject.getValue();
+    const removedExpense: Expense = getExpenseObjectFromArrayById(expensesList, id);
     const index = getIndexFromArrayById(expensesList, id);
     expensesList.splice(index, 1);
     this.expensesSubject.next(expensesList);

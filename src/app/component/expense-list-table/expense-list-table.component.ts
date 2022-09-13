@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger} from '@angular/animations';
-import { ExpenseService } from 'src/app/service/expense.service';
-import { Friend, Expense, ExpenseData, Action, ActionResponse } from 'src/app/type'; 
+import { ExpenseService } from '../../service/expense.service';
+import { Friend, Expense, ExpenseData, Action, ActionResponse } from '../../type'; 
 import { MatTableDataSource} from '@angular/material/table';
-import { getStringFromArray } from 'src/app/constants';
+import { getStringFromArray } from '../../constants';
 import { ModuleExpenseDialogComponent } from '../dialog/module-expense-dialog/module-expense-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { getExpenseObjectFromArrayById } from '../../constants';

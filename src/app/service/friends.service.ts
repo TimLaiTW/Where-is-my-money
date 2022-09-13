@@ -34,10 +34,16 @@ export class FriendsService {
     this.friendsSubject.next(friendsList);
   }
 
-  editName(friend: Friend): void {
+  editFriend(friend: Friend): void {
     const friendsList: Friend[] = this.friendsSubject.getValue();
     const index = getIndexFromArrayById(friendsList, friend.uuid);
     friendsList[index].name = friend.name;
+    this.friendsSubject.next(friendsList);
+  }
+
+  resetAmount(){
+    const friendsList: Friend[] = this.friendsSubject.getValue();
+    friendsList.forEach(friend => friend.amount = 0);
     this.friendsSubject.next(friendsList);
   }
 }

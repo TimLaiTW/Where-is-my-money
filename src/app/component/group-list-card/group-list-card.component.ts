@@ -42,7 +42,7 @@ export class GroupListCardComponent {
           name: result.data.name,
           amount: friend.amount
         }
-        this.friendsService.editName(res);
+        this.friendsService.editFriend(res);
       }
       else if (result.event === 'Remove'){
         this.friendsService.removeFriend(friend.uuid);

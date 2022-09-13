@@ -18,3 +18,7 @@ export function getExpenseObjectFromArrayById(arr: Expense[], uuid: string): Exp
     const objIndex = getIndexFromArrayById(arr, uuid);
     return arr[objIndex];
 }
+
+export function isFriendObjectAvailable(arr: Friend[], obj: Friend): boolean{
+    return arr.includes(obj);
+}
