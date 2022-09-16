@@ -3,10 +3,9 @@ import { animate, state, style, transition, trigger} from '@angular/animations';
 import { ExpenseService } from '../../service/expense.service';
 import { Friend, Expense, ExpenseData, Action, ActionResponse } from '../../type'; 
 import { MatTableDataSource} from '@angular/material/table';
-import { getStringFromArray } from '../../constants';
 import { ModuleExpenseDialogComponent } from '../dialog/module-expense-dialog/module-expense-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { getExpenseObjectFromArrayById } from '../../constants';
+import { getExpenseObjectFromArrayById, getStringFromArray } from '../../share';
 
 @Component({
   selector: 'app-expense-list-table',

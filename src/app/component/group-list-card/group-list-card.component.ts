@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Friend, Action, ActionResponse } from '../../type';
+import { Friend, Action, ActionResponse, HeadLinkData } from '../../type';
 import { ModuleFriendDialogComponent } from '../../component/dialog/module-friend-dialog/module-friend-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FriendsService } from '../../service/friends.service';
-
 @Component({
   selector: 'app-group-list-card',
   templateUrl: './group-list-card.component.html',
@@ -40,7 +39,8 @@ export class GroupListCardComponent {
         const res: Friend = {
           uuid: friend.uuid,
           name: result.data.name,
-          amount: friend.amount
+          amount: friend.amount,
+          icon: friend.icon
         }
         this.friendsService.editFriend(res);
       }
@@ -49,4 +49,8 @@ export class GroupListCardComponent {
       }
     });
   }
+
+  getHeadIcon(iconData: HeadLinkData): string{
+    return `https://img.icons8.com/color/48/000000/circled-user-${iconData.sex}-skin-type-${iconData.skin}--v1.png`
+}
 }

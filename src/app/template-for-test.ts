@@ -1,14 +1,18 @@
 import { Friend, Expense } from "./type"
+import { Sex, Skin } from "./head-icon"
+
 export const FakeFriendA: Friend = {
     uuid: 'aaa',
     name: 'Fake user A',
-    amount: 0
+    amount: 0,
+    icon: {sex: Sex.MALE, skin: Skin.Type_1}
 }
 
 export const FakeFriendB: Friend = {
     uuid: 'bbb',
     name: 'Fake user B',
-    amount: 0
+    amount: 0,
+    icon: {sex: Sex.FEMALE, skin: Skin.Type_7}
 }
 
 export const FakeExpense0: Expense = {

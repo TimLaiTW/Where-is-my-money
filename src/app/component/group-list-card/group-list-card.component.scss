@@ -1,16 +1,16 @@
 .mat-card {
-    cursor: pointer;
     margin: 0.5rem 0;
-    height: 3rem;
+    height: 3.5rem;
 }
 
 .mat-card:hover {
     background: whitesmoke;
 }
 
-.mat-icon {
+.head-icon {
     margin-left: 1rem;
-    margin-right: 2rem;;
+    margin-right: 2rem;
+    height: 1.6rem;
 }
 
 .mat-card-title, .mat-card-content {

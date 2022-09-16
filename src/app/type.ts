@@ -12,7 +12,8 @@ export type ActionResponse = {
 export type Friend = {
     uuid: string,
     name: string,
-    amount: number
+    amount: number,
+    icon: HeadLinkData,
 };
 
 export interface FriendData {
@@ -55,3 +56,8 @@ export type ExpenseDialog = {
     removeBtnText?: string,
     submitBtnText?: string,
 };
+
+export type HeadLinkData = {
+    sex: string,
+    skin: string
+}

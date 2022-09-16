@@ -1,9 +1,7 @@
 <mat-card class="card">
     <mat-card-content>
          <mat-card-title> 
-            <mat-icon>
-                face
-            </mat-icon>
+            <img class="head-icon" [src]="getHeadIcon(friend.icon)"/>
             {{friend.name}} 
         </mat-card-title>
         <div class="spacer"></div>

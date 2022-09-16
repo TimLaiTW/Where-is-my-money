@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Friend, Expense, ExpenseData, Action } from '../type';
-import { getExpenseObjectFromArrayById, getIndexFromArrayById } from '../constants';
+import { getExpenseObjectFromArrayById, getIndexFromArrayById } from '../share';
 import { v4 as uuidv4 } from 'uuid';
 import { FakeExpense0, FakeExpense1 } from '../template-for-test';
 
