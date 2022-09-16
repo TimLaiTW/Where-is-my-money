@@ -1,5 +1,7 @@
 .mat-dialog-title {
     text-align: left;
+    display: flex;
+    align-items: center;
 }
 
 .mat-form-field {
@@ -8,4 +10,9 @@
 
 .mat-dialog-actions {
     justify-content: space-between;
+}
+
+.head-icon {
+    margin-left: 1rem;
+    margin-right: 1rem;
 }

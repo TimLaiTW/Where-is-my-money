@@ -3,6 +3,7 @@ import { Friend, Action, ActionResponse, HeadLinkData } from '../../type';
 import { ModuleFriendDialogComponent } from '../../component/dialog/module-friend-dialog/module-friend-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FriendsService } from '../../service/friends.service';
+
 @Component({
   selector: 'app-group-list-card',
   templateUrl: './group-list-card.component.html',
@@ -27,7 +28,8 @@ export class GroupListCardComponent {
       data: {
         action: Action.EDIT,
         title: 'Edit ' + friend.name,
-        name: friend.name
+        name: friend.name,
+        icon: friend.icon
       }
     });
 

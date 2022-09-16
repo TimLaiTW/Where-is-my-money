@@ -41,7 +41,8 @@ export type FriendDialog = {
     cancelBtnText?: string,
     removeBtnText?: string,
     submitBtnText?: string,
-    name?: string
+    name?: string,
+    icon?: HeadLinkData
 };
 
 export type ExpenseDialog = {
