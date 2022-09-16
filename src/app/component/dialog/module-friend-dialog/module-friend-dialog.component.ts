@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { FriendDialog, Action } from '../../../type';
+import { FriendDialog, HeadIconData } from '../../../type';
 
 
 @Component({
@@ -22,4 +22,9 @@ export class ModuleFriendDialogComponent {
 
       this.dialogRef.close(response);
     } 
+
+
+  getHeadIcon(iconData: HeadIconData): string{
+    return `../../../../assets/headIcon/${iconData.sex}-type-${iconData.skin}.png`
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Friend, Action, ActionResponse, HeadLinkData } from '../../type';
+import { Friend, Action, ActionResponse, HeadIconData } from '../../type';
 import { ModuleFriendDialogComponent } from '../../component/dialog/module-friend-dialog/module-friend-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FriendsService } from '../../service/friends.service';
@@ -52,7 +52,7 @@ export class GroupListCardComponent {
     });
   }
 
-  getHeadIcon(iconData: HeadLinkData): string{
-    return `https://img.icons8.com/color/48/000000/circled-user-${iconData.sex}-skin-type-${iconData.skin}--v1.png`
-}
+  getHeadIcon(iconData: HeadIconData): string{
+    return `../../../assets/headIcon/${iconData.sex}-type-${iconData.skin}.png`
+  }
 }

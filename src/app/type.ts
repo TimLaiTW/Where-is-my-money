@@ -13,7 +13,7 @@ export type Friend = {
     uuid: string,
     name: string,
     amount: number,
-    icon: HeadLinkData,
+    icon: HeadIconData,
 };
 
 export interface FriendData {
@@ -42,7 +42,7 @@ export type FriendDialog = {
     removeBtnText?: string,
     submitBtnText?: string,
     name?: string,
-    icon?: HeadLinkData
+    icon?: HeadIconData
 };
 
 export type ExpenseDialog = {
@@ -58,7 +58,7 @@ export type ExpenseDialog = {
     submitBtnText?: string,
 };
 
-export type HeadLinkData = {
+export type HeadIconData = {
     sex: string,
     skin: string
 }

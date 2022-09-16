@@ -12,7 +12,7 @@ export const FakeFriendB: Friend = {
     uuid: 'bbb',
     name: 'Fake user B',
     amount: 0,
-    icon: {sex: Sex.FEMALE, skin: Skin.Type_7}
+    icon: {sex: Sex.FEMALE, skin: Skin.Type_1}
 }
 
 export const FakeExpense0: Expense = {
