@@ -41,7 +41,7 @@ export class GroupListCardComponent {
         const res: Friend = {
           uuid: friend.uuid,
           name: result.data.name,
-          amount: friend.amount,
+          balance: friend.balance,
           icon: friend.icon
         }
         this.friendsService.editFriend(res);

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Friend } from '../type';
-import { getIndexFromArrayById } from '../share';
+import { getIndexFromArrayById, getRandomHeadData } from '../share';
 import { v4 as uuidv4 } from 'uuid';
-import { getRandomHeadData } from '../head-icon';
 import { FakeFriendA, FakeFriendB } from '../template-for-test';
 
 @Injectable({
@@ -22,10 +21,9 @@ export class FriendsService {
     friendsList.push({
       uuid: uuidv4(),
       name: name,
-      amount: 0,
+      balance: 0,
       icon: getRandomHeadData()
     });
-    console.log(friendsList);
     this.friendsSubject.next(friendsList);
   }
 
@@ -43,9 +41,9 @@ export class FriendsService {
     this.friendsSubject.next(friendsList);
   }
 
-  resetAmount(){
+  resetBalance(): void {
     const friendsList: Friend[] = this.friendsSubject.getValue();
-    friendsList.forEach(friend => friend.amount = 0);
+    friendsList.forEach(friend => friend.balance = 0);
     this.friendsSubject.next(friendsList);
   }
 }

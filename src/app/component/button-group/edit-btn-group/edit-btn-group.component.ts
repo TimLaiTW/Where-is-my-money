@@ -11,14 +11,14 @@ export class EditBtnGroupComponent {
   @Output() editEvent = new EventEmitter<ActionResponse>();
 
 	onAction(action: string){
-    if (action === 'add'){
-      this.editEvent.emit({id: this.id, action: Action.ADD});
+    if (action === Action.ADD){
+      this.editEvent.emit({id: this.id, action});
     }
-    else if (action === 'edit'){
-      this.editEvent.emit({id: this.id, action: Action.EDIT});
+    else if (action === Action.EDIT){
+      this.editEvent.emit({id: this.id, action});
     }
-    else if (action === 'remove'){
-      this.editEvent.emit({id: this.id, action: Action.REMOVE});
+    else if (action === Action.REMOVE){
+      this.editEvent.emit({id: this.id, action});
     }
 	}
 }

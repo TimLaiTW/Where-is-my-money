@@ -10,7 +10,7 @@ import { MatTableDataSource} from '@angular/material/table';
 })
 export class ReportTableComponent implements OnInit{
 
-  displayedColumns: string[] = ['name', 'amount'];
+  displayedColumns: string[] = ['name', 'balance'];
   dataSource = new MatTableDataSource<Friend>([]);
 
   constructor(private friendsService: FriendsService){}

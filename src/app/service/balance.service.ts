@@ -11,7 +11,7 @@ export class BalanceService{
   expenses: Expense[] = [];
   constructor(private friendService: FriendsService, private expenseService: ExpenseService) { }
 
-  async initStep(){
+  async initStep() : Promise<void> {
     //TODO: really need subscribe for one time initial?
     this.friendService.friends.subscribe(
       friends => {
@@ -22,7 +22,7 @@ export class BalanceService{
         this.expenses = expenses;
       });
 
-    this.friendService.resetAmount();
+    this.friendService.resetBalance();
     this.expenses.forEach(expense => {
       this.amountForPaidBy(expense);
       this.amountForShareWith(expense);
@@ -30,17 +30,17 @@ export class BalanceService{
   }
 
   // TODO: optimize the calculation.
-  amountForPaidBy(expense: Expense){
+  amountForPaidBy(expense: Expense): void {
     let paidBy = expense.paidBy;
-    paidBy['amount'] += expense.amount;
+    paidBy['balance'] += expense.amount;
     this.friendService.editFriend(paidBy);
   }
 
   // TODO: optimize the calculation.
-  amountForShareWith(expense: Expense){
+  amountForShareWith(expense: Expense): void {
     const amountPerFriend = expense.amount / expense.shareWith.length;
     expense.shareWith.forEach(friend => {
-      friend['amount'] -= amountPerFriend;
+      friend['balance'] -= amountPerFriend;
       this.friendService.editFriend(friend);
     });
   }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddExpenseDialogComponent } from 'src/app/component/dialog/add-expense-dialog/add-expense-dialog.component';
+import { AddExpenseDialogComponent } from '../../component/dialog/add-expense-dialog/add-expense-dialog.component';
 import { ExpenseService } from '../../service/expense.service';
 
 @Component({

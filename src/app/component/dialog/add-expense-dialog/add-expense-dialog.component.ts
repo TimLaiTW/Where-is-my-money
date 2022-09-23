@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { Friend, ExpenseData } from '../../../type';
+import { Friend, ExpenseModule } from '../../../type';
 import { FriendsService } from '../../../service/friends.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class AddExpenseDialogComponent implements OnInit{
   constructor(
     public dialogRef: MatDialogRef<AddExpenseDialogComponent>, 
     private friendsService: FriendsService,
-    @Inject(MAT_DIALOG_DATA) public expenseData: ExpenseData) { }
+    @Inject(MAT_DIALOG_DATA) public expenseData: ExpenseModule) { }
 
   ngOnInit(): void {
     this.friendsService.friends.subscribe(
@@ -49,7 +49,7 @@ export class AddExpenseDialogComponent implements OnInit{
     return this.expense.get('description');
   }
 
-  getExpenseData(): ExpenseData {
+  getExpenseData(): ExpenseModule {
     return {
       paidBy: this.expense.value.paidBy,
       shareWith: this.expense.value.shareWith,

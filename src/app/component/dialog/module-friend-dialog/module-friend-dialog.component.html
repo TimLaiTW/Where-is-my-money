@@ -1,6 +1,6 @@
 <div mat-dialog-title *ngIf="data.action === 'add'"> Enter your friend's name </div>
 <div mat-dialog-title *ngIf="data.action === 'edit' && data.icon">
-    <img class="head-icon" [src]="getHeadIcon(data.icon)" alt="icon">
+    <img class="head-icon" [src]="getHeadIcon(data.icon)" alt="head-icon">
     {{data.name}}
 </div>
 <div mat-dialog-content>

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger} from '@angular/animations';
 import { ExpenseService } from '../../service/expense.service';
-import { Friend, Expense, ExpenseData, Action, ActionResponse } from '../../type'; 
+import { Friend, Expense, ExpenseModule, Action, ActionResponse } from '../../type'; 
 import { MatTableDataSource} from '@angular/material/table';
 import { ModuleExpenseDialogComponent } from '../dialog/module-expense-dialog/module-expense-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { getExpenseObjectFromArrayById, getStringFromArray } from '../../share';
+import { getObjectFromArrayById } from '../../share';
 
 @Component({
   selector: 'app-expense-list-table',
@@ -35,12 +35,12 @@ export class ExpenseListTableComponent implements OnInit{
   }
 
   columnsToDisplay = ['paid-by', 'share-with', 'amount', 'action'];
-  expandedElement: ExpenseData | null = null;
+  expandedElement: ExpenseModule | null = null;
 
   onEditEvent(response: ActionResponse){
     if (response.action === Action.EDIT && response.id){
-      const expense = getExpenseObjectFromArrayById(this.expenses, response.id);
-      this.openEditExpenseDialog(expense);
+      const expense = getObjectFromArrayById(this.expenses, response.id);
+      this.openEditExpenseDialog(expense as Expense);
     }
     else if (response.action === Action.REMOVE && response.id){
       this.expenseService.removeExpense(response.id);
@@ -84,6 +84,6 @@ export class ExpenseListTableComponent implements OnInit{
 
   getStringFromFriends(friends: Friend[]): string{
     const friendsName: string[] = friends.map(friend => friend.name);
-    return getStringFromArray(friendsName);
+    return friendsName.join(", ");
   }
 }

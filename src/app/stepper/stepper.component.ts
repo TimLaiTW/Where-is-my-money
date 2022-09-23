@@ -4,6 +4,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/material/stepper';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ExpenseService } from '../service/expense.service';
 import { BalanceService } from '../service/balance.service';
 
 @Component({
@@ -23,7 +24,10 @@ export class StepperComponent implements OnInit {
   readonly EXPENSE_STEP_INDEX = 1;
   readonly REPORT_STEP_INDEX = 2;
 
-  constructor(breakpointObserver: BreakpointObserver, private balanceService: BalanceService) {
+  constructor(
+    breakpointObserver: BreakpointObserver, 
+    private expenseService: ExpenseService, 
+    private balanceService: BalanceService) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
@@ -35,8 +39,10 @@ export class StepperComponent implements OnInit {
   async selectionChange(event: StepperSelectionEvent){
     // Always reset the completed flag when entering a step.
     event.selectedStep.completed = false;
-
-    if (event.selectedIndex === this.REPORT_STEP_INDEX){
+    if (event.selectedIndex === this.EXPENSE_STEP_INDEX){
+      await this.expenseService.initStep();
+    }
+    else if (event.selectedIndex === this.REPORT_STEP_INDEX){
       await this.balanceService.initStep();
     }
   }

@@ -1,9 +1,11 @@
+/** Action taken by dialog */
 export enum Action {
     ADD = 'add',
     EDIT = 'edit',
     REMOVE = 'remove'
 }
 
+/** response from dialog */
 export type ActionResponse = {
     id?: string,
     action: Action
@@ -12,53 +14,58 @@ export type ActionResponse = {
 export type Friend = {
     uuid: string,
     name: string,
-    amount: number,
+    balance: number,
     icon: HeadIconData,
 };
 
-export interface FriendData {
-    name: string;
-}
+export interface ExpenseModule {
+    paidBy: Friend,
+    shareWith: Friend[]
+    amount: number,
+    description?: string
+};
 
-export type Expense = {
+export interface Expense extends ExpenseModule {
+    uuid: string,
+};
+
+/** dialog construction */
+export interface DialogData {
+    action: string,
+    title: string,
+    cancelBtnText?: string,
+    removeBtnText?: string,
+    submitBtnText?: string,
+};
+
+/** Friend dialog */
+export interface FriendDialog extends DialogData{
+    name: string,
+    icon: HeadIconData
+};
+
+/** Expense dialog */
+export interface ExpenseDialog extends DialogData{
     uuid: string,
     paidBy: Friend,
-    shareWith: Friend[]
+    shareWith: Friend[],
     amount: number,
-    description?: string
+    description: string,
 };
 
-export type ExpenseData = {
-    paidBy: Friend,
-    shareWith: Friend[]
-    amount: number,
-    description?: string
-};
-
-export type FriendDialog = {
-    action: string,
-    title: string,
-    cancelBtnText?: string,
-    removeBtnText?: string,
-    submitBtnText?: string,
-    name?: string,
-    icon?: HeadIconData
-};
-
-export type ExpenseDialog = {
-    action: string,
-    title: string,
-    uuid?: string,
-    paidBy?: Friend,
-    shareWith?: Friend[],
-    amount?: number,
-    description?: string,
-    cancelBtnText?: string,
-    removeBtnText?: string,
-    submitBtnText?: string,
-};
-
+/** head icon params */
 export type HeadIconData = {
-    sex: string,
-    skin: string
+    sex: HeadIconSex,
+    skin: HeadIconSkin
+}
+
+export enum HeadIconSex {
+    MALE = 'male',
+    FEMALE = 'female'
+}
+
+export enum HeadIconSkin {
+    Type_1 = '1',
+    Type_2 = '2',
+    Type_3 = '3',
 }

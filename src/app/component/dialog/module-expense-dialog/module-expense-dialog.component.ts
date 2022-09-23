@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { Friend, ExpenseData, ExpenseDialog } from '../../../type';
+import { Friend, ExpenseModule, ExpenseDialog } from '../../../type';
 import { FriendsService } from '../../../service/friends.service';
 
 // testing
@@ -16,7 +16,7 @@ interface Food {
   templateUrl: './module-expense-dialog.component.html',
   styleUrls: ['./module-expense-dialog.component.scss']
 })
-export class ModuleExpenseDialogComponent{
+export class ModuleExpenseDialogComponent implements OnInit{
   friends: Friend[] = [];
 
   expense = new FormGroup({
@@ -70,7 +70,7 @@ export class ModuleExpenseDialogComponent{
     return this.expense.get('description');
   }
 
-  getExpense(): ExpenseData {
+  getExpense(): ExpenseModule {
     return {
       paidBy: this.expense.value.paidBy,
       shareWith: this.expense.value.shareWith,
